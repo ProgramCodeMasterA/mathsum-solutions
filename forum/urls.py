@@ -3,5 +3,5 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
-    path('<context:context>/', views.post_detail, name='post_detail'),
+    path('<problem:problem>/', views.post_detail, name='post_detail'),
 ]

@@ -9,7 +9,7 @@ class PostList(generic.ListView):
     template_name = "forum/index.html"
     paginate_by = 6
 
-def post_detail(request, context):
+def post_detail(request, problem):
     """
     Display an individual :model:`forum.Post`.
 
@@ -24,7 +24,7 @@ def post_detail(request, context):
     """
 
     queryset = Post.objects.filter(status=1)
-    post = get_object_or_404(queryset, context=context)
+    post = get_object_or_404(queryset, problem=problem)
 
     return render(
         request,
