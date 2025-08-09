@@ -25,5 +25,6 @@ class Post(models.Model):
     area = models.CharField(max_length=15, choices=MATH_CHOICES, default='arithmetic')  # Choose which category of Maths the problem is
     difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default='low')  # Choose perceived difficulty of problem
     resolution = models.BooleanField(default=False)    # True/False if math problem is solved
-    created_on = models.DateTimeField(auto_now_add=True)    # Add DateTime field
+    created_on = models.DateTimeField(auto_now_add=True)    # Add DateTime field for when post is created
+    updated_on = models.DateTimeField(auto_now_add=True)    # Add DateTime field for when post is updated
     status = models.IntegerField(choices=STATUS, default=0) # Define if object is a draft or is published post
