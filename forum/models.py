@@ -28,6 +28,12 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)    # Add DateTime field for when post is created
     updated_on = models.DateTimeField(auto_now_add=True)    # Add DateTime field for when post is updated
 
+    class Meta:
+        ordering = ["-created_on"]
+    
+    def __str__(self):
+        return f"{self.problem} | written by {self.author}"
+
 
 class Comment(models.Model):
     post = models.ForeignKey(
@@ -35,5 +41,11 @@ class Comment(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
     response = models.TextField(max_length=200)     # Response to user's post
-    answer = models.BooleanField(default=False)     # True/False if reply gives correct solution for math problem
+    resolution = models.BooleanField(default=False)     # True/False if reply gives correct solution for math problem
     created_on = models.DateTimeField(auto_now_add=True)    # Add DateTime field for when comment is created
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return f"Comment {self.response} by {self.author}"
